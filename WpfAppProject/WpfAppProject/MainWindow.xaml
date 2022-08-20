@@ -1,0 +1,166 @@
+﻿<Window x:Class="WpfAppProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="700"
+        Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="menuImage">
+            <Setter Property="Image.Height" Value="50"></Setter>
+            <Setter Property="Image.Width" Value="50"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="TextBlock.HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="TextBlock.FontSize" Value="16"></Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="TextBox.HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="TextBox.VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="TextBox.Margin" Value="5"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="2">
+            <Border Name="border1"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Width="25"
+                    Height="auto"
+                    MouseLeftButtonDown="button1_Click">
+                <TextBlock TextAlignment="Center">1</TextBlock>
+            </Border>
+            <Border Name="border2"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Width="25"
+                    Height="auto"
+                    MouseLeftButtonDown="button2_Click">
+                <TextBlock TextAlignment="Center">2</TextBlock>
+            </Border>
+        </Menu>
+
+        <Border BorderBrush="Black"
+                BorderThickness="2"
+                Grid.Row="1">
+            <Grid Name="gridBoard"
+                  MinHeight="500" 
+                  MinWidth="720">
+                
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1"
+              Grid.Row="1"
+              Background="Gainsboro">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Properties Column 1 -->
+            <Border Grid.Row="0"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <TextBlock Text="Properties"
+                       FontSize="35"
+                       FontFamily="Times New Roman"
+                       FontWeight="Thin"></TextBlock>
+            </Border>
+
+            <!-- Properties Column 2 -->    
+            <Border Grid.Row="1"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*"></RowDefinition>
+                        <RowDefinition Height="0.2*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Position:"/>
+                    <TextBox Name="positionRow"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             TextChanged="TextChanged"
+                             IsEnabled="False"/>
+                    <TextBox Name="positionCol"
+                             Grid.Row="0"
+                             Grid.Column="2"
+                             TextChanged="TextChanged"
+                             IsEnabled="False"/>
+                </Grid>
+            </Border>
+
+            <!-- Interaction Column 1 -->
+            <Border Grid.Row="2"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <TextBlock Grid.Row="2"
+                           Text="Interaction"
+                           FontSize="35"
+                           FontFamily="Times New Roman"
+                           FontWeight="Thin"></TextBlock>
+            </Border>
+
+            <!-- Interaction Column 2 -->
+            <Border Grid.Row="3"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <Grid Grid.Row="3">
+                    <StackPanel>
+                        <ToggleButton Name="togglebuttonRemove"
+                                      Background="#FFFA5B5B"
+                                      FontSize="15"
+                                      Margin="0,5,0,0">Remove</ToggleButton>
+                        <Button Name="buttonClearAll"
+                                Background="#FFF5F628"
+                                FontSize="15"
+                                Margin="0,5,0,0"
+                                Click="buttonClearAll_Click">Clear All</Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <!-- Elements -->
+        <Grid Grid.Row="2"
+              Grid.ColumnSpan="2">
+            <Menu Name="menuItems"
+                  Background="Beige"
+                  BorderBrush="Black"
+                  BorderThickness="2"> <!--ItemsSource="{Binding items}"-->
+
+            </Menu>
+        </Grid>
+
+    </Grid>
+</Window>
